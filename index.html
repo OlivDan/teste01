@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silva & Associados | Advocacia Especializada</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #a3a3a3;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --accent: #be123c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.9)), url('/api/placeholder/1200/700') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #9f1239;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--secondary);
+        }
+        
+        .expertise {
+            background-color: var(--light);
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .expertise-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .expertise-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .why-us {
+            background-color: white;
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .why-us-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .why-us-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .why-us-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .success-cases {
+            background-color: var(--light);
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .case-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .case-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .team {
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member p {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .team-member .social a {
+            color: var(--primary);
+            margin: 0 5px;
+            font-size: 1.2rem;
+        }
+        
+        .faq {
+            background-color: var(--light);
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            position: relative;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info-item i {
+            width: 30px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .contact-form {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Silva & <span>Associados</span></div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="navigation">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#why-us">Por que nós</a></li>
+                    <li><a href="#success-cases">Casos de Sucesso</a></li>
+                    <li><a href="#team">Equipe</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Defendendo seus direitos com excelência e compromisso</h1>
+            <p>Especialistas em Direito do Trabalho e Direito do Consumidor, com análise individualizada e atendimento personalizado para cada cliente.</p>
+            <a href="#contact" class="btn">Agende uma Consulta</a>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise" id="expertise">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Expertise</h2>
+                <p>Oferecemos soluções jurídicas especializadas em áreas que afetam diretamente o seu dia a dia.</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Direito do Trabalho</h3>
+                    <p>Atuamos na defesa dos direitos trabalhistas, seja para empregados ou empregadores, buscando soluções eficientes e justas para questões como:</p>
+                    <ul>
+                        <li>Rescisões contratuais</li>
+                        <li>Horas extras não pagas</li>
+                        <li>Assédio moral e sexual</li>
+                        <li>Danos morais</li>
+                        <li>Acidentes de trabalho</li>
+                        <li>Negociações sindicais</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>Direito do Consumidor</h3>
+                    <p>Defendemos seus direitos nas relações de consumo, combatendo práticas abusivas e buscando a reparação de danos com foco em:</p>
+                    <ul>
+                        <li>Cobranças indevidas</li>
+                        <li>Produtos e serviços defeituosos</li>
+                        <li>Negativação indevida</li>
+                        <li>Propaganda enganosa</li>
+                        <li>Cancelamento de contratos</li>
+                        <li>Reparação por danos morais e materiais</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>Consultoria Preventiva</h3>
+                    <p>Prevenção é sempre o melhor caminho. Oferecemos consultoria jurídica para minimizar riscos e evitar litígios:</p>
+                    <ul>
+                        <li>Análise de contratos</li>
+                        <li>Consultoria para empresas</li>
+                        <li>Adequação às leis de proteção ao consumidor</li>
+                        <li>Compliance trabalhista</li>
+                        <li>Orientação jurídica contínua</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por Que Escolher Nossos Serviços</h2>
+                <p>Entenda o que nos diferencia e como podemos ajudar você a defender seus direitos.</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-us-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Comprometimento</h3>
+                    <p>Assumimos cada caso com dedicação total, tratando as causas de nossos clientes como se fossem nossas.</p>
+                </div>
+                <div class="why-us-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Análise Individualizada</h3>
+                    <p>Cada caso é único e merece uma estratégia personalizada para alcançar os melhores resultados.</p>
+                </div>
+                <div class="why-us-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Comunicação direta com o advogado responsável pelo seu caso, sem intermediários.</p>
+                </div>
+                <div class="why-us-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Resultados Comprovados</h3>
+                    <p>Histórico de sucesso em casos semelhantes, com reconhecimento por nossos clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases Section -->
+    <section class="success-cases" id="success-cases">
+        <div class="container">
+            <div class="section-title">
+                <h2>Casos de Sucesso</h2>
+                <p>Conheça alguns dos resultados que conquistamos para nossos clientes.</p>
+            </div>
+            <div class="case-grid">
+                <div class="case-card">
+                    <h3>Indenização por Assédio Moral</h3>
+                    <p>Cliente trabalhava em empresa onde sofria constantes humilhações. Conseguimos indenização de R$ 50.000,00 por danos morais.</p>
+                    <p><strong>Resultado:</strong> Sentença favorável em 1ª instância, mantida pelo TRT.</p>
+                </div>
+                <div class="case-card">
+                    <h3>Cancelamento de Cobranças Indevidas</h3>
+                    <p>Cliente recebia cobranças de serviços não contratados em sua fatura. Conseguimos o cancelamento e indenização por danos morais.</p>
+                    <p><strong>Resultado:</strong> Cancelamento das cobranças e indenização de R$ 15.000,00.</p>
+                </div>
+                <div class="case-card">
+                    <h3>Reintegração ao Trabalho</h3>
+                    <p>Trabalhador demitido durante tratamento médico. Conseguimos sua reintegração com pagamento dos salários do período afastado.</p>
+                    <p><strong>Resultado:</strong> Reintegração imediata e indenização.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Equipe</h2>
+                <p>Conheça os profissionais que estarão ao seu lado na defesa dos seus direitos.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Dr. Roberto Silva">
+                    <h3>Dr. Roberto Silva</h3>
+                    <p>Direito do Trabalho</p>
+                    <p>20 anos de experiência</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Dra. Carla Mendes">
+                    <h3>Dra. Carla Mendes</h3>
+                    <p>Direito do Consumidor</p>
+                    <p>15 anos de experiência</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Dr. Paulo Oliveira">
+                    <h3>Dr. Paulo Oliveira</h3>
+                    <p>Direito do Trabalho e Previdenciário</p>
+                    <p>12 anos de experiência</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Encontre respostas para as dúvidas mais comuns sobre nossos serviços.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Quanto tempo demora um processo trabalhista?</div>
+                    <div class="faq-answer">
+                        <p>O tempo de duração de um processo trabalhista varia conforme a complexidade da causa e a região onde é ajuizado. Em média, pode durar de 6 meses a 2 anos, podendo se estender em caso de recursos. Nosso escritório trabalha para agilizar cada etapa processual dentro das possibilidades legais.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Quais documentos preciso levar na primeira consulta?</div>
+                    <div class="faq-answer">
+                        <p>Para a primeira consulta, é recomendável trazer documentos pessoais (RG, CPF), documentos relacionados ao caso (contratos, comprovantes, notas fiscais, etc.), e qualquer comunicação relevante (e-mails, mensagens). Não se preocupe se não tiver todos os documentos; faremos uma análise inicial com o que você tiver em mãos.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Como funciona o pagamento dos honorários?</div>
+                    <div class="faq-answer">
+                        <p>Trabalhamos com diferentes modalidades de honorários, dependendo do tipo de caso. Podemos trabalhar com honorários fixos, por hora, ou contingenciais (percentual sobre o valor da causa). Na primeira consulta, apresentaremos a proposta mais adequada ao seu caso específico, sempre com transparência e formalização em contrato.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">É possível resolver meu caso sem entrar na justiça?</div>
+                    <div class="faq-answer">
+                        <p>Sim. Sempre buscamos, primeiramente, soluções extrajudiciais quando viáveis, como acordos, mediações e conciliações. Essa abordagem pode ser mais rápida e menos desgastante. No entanto, quando a negociação não é possível ou não atende aos seus interesses, estamos preparados para defender seus direitos judicialmente.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Vocês atendem em outras cidades?</div>
+                    <div class="faq-answer">
+                        <p>Sim. Além do atendimento presencial em nosso escritório, oferecemos atendimento remoto para clientes de outras localidades. Atuamos em processos em diversas comarcas e tribunais do país, contando com uma rede de correspondentes quando necessário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para ouvir seu caso e oferecer a melhor solução jurídica.</p>
+            </div>
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Localização</h4>
+                                <p>Av. Paulista, 1000, Sala 1010</p>
+                                <p>Bela Vista, São Paulo - SP</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>(11) 3333-4444</p>
+                                <p>WhatsApp: (11) 99999-9999</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contato@silvaadvocacia.com.br</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 9h às 18h</p>
+                                <p>Sábados: 9h às 12h (com agendamento)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Localização</h3>
+                        <div style="width: 100%; height: 300px; background-color: #eee; display: flex; justify-content: center; align-items: center; border-radius: 10px;">
+                            <p>Mapa indisponível - Av. Paulista, 1000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone/WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecione o assunto</option>
+                                <option value="trabalho">Direito do Trabalho</option>
+                                <option value="consumidor">Direito do Consumidor</option>
+                                <option value="consultoria">Consultoria Preventiva</option>
+                                <option value="outro">Outro Assunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
